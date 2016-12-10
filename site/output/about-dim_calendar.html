@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>gregnicol site | About Dim_Calendar</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/base.css" />
+        <meta name="author" value="greg nicol" />
+        <meta name="description" value="About Dim_Calendar" />
+        <meta name="keywords" value="dimcal,SQL" />
+    </head>
+    <body>
+        <header class="site highlight">
+                <h1 class="stamp lrot"></h1>
+        </header>
+        <div class="site clearfix">
+<nav class="lfloat">
+    <ul class="links">
+    <li>
+        <a class="stamp" href="/category/blog.html">Blog</a>
+    </li>
+    <li class="active">
+        <a  href="/category/dim_calendar.html">Dim_Calendar</a>
+    </li>
+    </ul>
+    <ul class="social rfloat">
+        <li><a title="You can add links in your config file" href="#"></a></li>
+        <li><a title="github" href="https://github.com/gregn610"></a></li>
+    </ul>
+</nav>            <section class="content">
+                <h1 class="stamp">About Dim_Calendar</h1>
+                <div class="body">
+<article>
+    <footer>
+        <ul class="socialbtn">
+            <li></li>
+            <li></li>
+        </ul>
+        Fri 09 December 2016
+        <address>
+            <a href="/author/greg.html">greg</a>
+        </address>
+
+<ul class="tags"><lh>tags:</lh><li><a href="/tag/dimcal.html">dimcal</a></li><li><a href="/tag/sql.html">SQL</a></li></ul>    </footer>
+
+    <div class="content">
+        
+  <span>
+<h2>Background</h2>
+<div>
+I wanted a <a href="https://www.postgresql.org/docs/current/static/plpgsql.html">PostgreSQL</a>
+and/or Python project and public holidays for a data warehouse
+<a href="http://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/calendar-date-dimension/">calendar dimension</a>
+ seemed good idea. <a href="https://github.com/gregn610/dimcal">Dim_Calendar</a> was born.
+I massively under estimated scope so soon set somewhat arbitary boundaries of the 1970-Jan 2038,
+lining up with 32 bit unix timestamps and chose the European Union members as a set of countries to aim to complete.
+</div>
+</span>
+<span>
+<h2>Details</h2>
+<div>
+It started out as a table definition and a collection of update statements written in
+PL/pgSQL. While looking around to implementing some kind of quality control, I
+found <a href="https://github.com/novafloss/workalendar">Workalendar</a>.
+This presented a decision point, either use a templating engine like Jinja to
+generate SQL straight from the python library, or continue down the path I was already
+on. I chose to use <a href="https://www.djangoproject.com/">Django</a> because I
+  wanted the practice. I used it's unit testing
+framework to compare the holiday dates the SQL was generating, with the dates in
+Workalendar. Going with Workalendar also influenced my decision to double down on
+the <code>calc_</code> columns, which is a slight design compromise. The SQL
+for one or more chosen country columns now can't be deployed without all the
+<code>calc_</code> columns being on the dim table beforehand. But the
+<code>calc_</code> columns can be dropped afterwards and the consistency &amp; accuracy
+benefits hopefully support the decision.
+</div>
+<div>
+Since the unit testing basically resulted in 3/5ths of a website, I decided to throw
+it out there &amp; solicit patches. I wanted a super simple hosting solution.
+Initially I was going to use <a href="https://django-bakery.readthedocs.io/en/latest/">Django-Bakery</a>
+to render the site statically and host it on <a href="https://aws.amazon.com/s3/">Amazon S3</a>.
+I was implementing Bakery when I lightbulbed and realized it was probably overkill.
+I could just crawl my local dev instance with <code>wget -r</code> as a sort of
+build process and dump the spidered results into S3. That is quick, simple and works well.
+I've also put the whole lot behind <a href="https://www.cloudflare.com/">Cloudflare</a>
+which, apart from the caching benefits, provides some nice high level metrics without
+stalking site visitors.
+</div>
+<div>
+The unit testing was doing what it's supposed to, uncovering bugs in my SQL. It also
+highlighted some countries that weren't yet available in Workalendar. This was an opportunity
+to learn the <a href="https://help.github.com/articles/about-pull-requests/">
+Github pull request</a> workflow and attempt an OSS contribution. A big thank you to
+Bruno for his patience and encouragement getting
+my patch into shape and <a href="https://github.com/novafloss/workalendar/commit/82f43fc74154282394a95b51de41e70a6fc3d299">accepted</a> to master.
+</div>
+<div>
+<a href="https://travis-ci.org/">Travis-CI</a> offers continuous integration for
+Github projects so that was the next avenue to explore. It was straight forward
+to get set up and quickly provides useful feedback. Dim_calendar has a few tests
+failing at the moment but I'm hoping to get them all passing soon and cut a v1.0
+release.
+</div>
+<div>
+I've bolted on some <a href="http://getbootstrap.com/">Bootstrap3</a> CSS so it is
+slightly less hideous to look at now. Along with getting to a v1.0 release, I'd
+like to give Serverless a go next and
+<a href="https://www.zappa.io/">Zappa.io</a> has caught my attention. Dim_Calendar
+might be my guinea pig for that too.
+</div>
+
+<div>
+Dim_Calendar is provided as is under the terms of <a href="http://unlicense.org/">Unlicense</a>.
+Alternatively you could license data from <a href="http://www.qppstudio.net/">professionals</a>.
+</div>
+</span>
+
+    </div><!-- /.entry-content -->
+
+
+</article>
+                </div>
+            </section>
+ <footer class="site clearfix bs">
+    <section class="lfloat">
+        <ul>
+            <lh>categories</lh>
+            <li><a href="/category/blog.html">Blog</a></li>
+            <li><a href="/category/dim_calendar.html">Dim_Calendar</a></li>
+        </ul>
+    </section>
+    <section class="lfloat">
+        <ul>
+            <lh>pages</lh>
+        </ul>
+    </section>
+    <section class="rfloat">
+    <small>
+        <p>site generated by <a href="https://github.com/getpelican/pelican">pelican</a></p>
+        <p>theme by <a href="https://github.com/demianbrecht">demian brecht</a></p>
+    </small>
+    </section>
+</footer>        </div>
+    </body>
+</html>
