@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'greg nicol'
-SITENAME = 'gregnicol site'
+AUTHOR = u'greg nicol'
+SITENAME = u'INSERT INTO /dev/null ...'
 SITEURL = ''
 
 PATH = 'content'
 
 TIMEZONE = 'Europe/Paris'
 
-DEFAULT_LANG = 'en'
+DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -23,16 +23,17 @@ AUTHOR_FEED_RSS = None
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
          ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+         ('CloudFlare', 'https://www.cloudflare.com/§')
+        )
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('github', 'https://github.com/gregn610'),)
+SOCIAL = ( ('github', 'https://github.com/gregn610'),
+	   ('linkedin', 'https://www.linkedin.com/in/greg-nicol-087a438/'),
+	 )
 
 DEFAULT_PAGINATION = False
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-THEME = 'pelican-bold'
-
+THEME = 'themes/pelican-sober'
