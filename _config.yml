@@ -1,5 +1,6 @@
 layout: sidebar
 style: light
+url: //gregn610.github.io
 
 plugins:
   - jekyll-octicons
@@ -25,5 +26,5 @@ topics:
     image_url: https://www.python.org/static/img/python-logo-large.png?1543670309
 
   - name: Vim
-    web_url: http://vimcasts.org/episodes/archive/
+    web_url: https://vim.rtorr.com/
      
