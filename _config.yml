@@ -16,7 +16,7 @@ defaults:
       layout: "post"
 
 topics:
-  - name: padnag
+  - name: my python project
     web_url: https://padnag.io
     image_url: https://padnag.io/images/logo/color_logo_transparent_background.svg
 
