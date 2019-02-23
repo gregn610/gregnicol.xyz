@@ -1,6 +1,5 @@
 layout: sidebar
 style: light
-url: //gregn610.github.io
 
 plugins:
   - jekyll-octicons
@@ -17,6 +16,10 @@ defaults:
       layout: "post"
 
 topics:
+  - name: padnag
+    web_url: https://padnag.io
+    image_url: https://padnag.io/images/logo/color_logo_transparent_background.svg
+
   - name: AWS
     web_url: https://aws.amazon.com/
     image_url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/220px-Amazon_Web_Services_Logo.svg.png
