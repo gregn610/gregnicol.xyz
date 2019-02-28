@@ -1,5 +1,6 @@
 layout: sidebar
 style: light
+url: "https://gregnicol.xyz"
 
 plugins:
   - jekyll-octicons
