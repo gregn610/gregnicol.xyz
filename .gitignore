@@ -1,6 +1,6 @@
-/venv/
-/site/__pycache__/
-**/.DS_Store
-*.pyc
-.idea
-
+*.gem
+.bundle
+.sass-cache
+_site
+Gemfile.lock
+vendor

@@ -1,0 +1,33 @@
+layout: sidebar
+style: light
+
+plugins:
+  - jekyll-octicons
+  - jekyll-github-metadata
+
+permalink: /:year/:month/:day/:title/
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts"
+    values:
+      layout: "post"
+
+topics:
+  - name: my python project
+    web_url: https://padnag.io
+    image_url: https://padnag.io/images/logo/color_logo_transparent_background.svg
+
+  - name: AWS
+    web_url: https://aws.amazon.com/
+    image_url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/220px-Amazon_Web_Services_Logo.svg.png
+
+  - name: Python
+    web_url: https://docs.python.org/3.6/py-modindex.html
+    image_url: https://www.python.org/static/img/python-logo-large.png?1543670309
+
+  - name: Vim
+    web_url: https://vim.rtorr.com/
+     
