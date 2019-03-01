@@ -1,6 +1,7 @@
 layout: sidebar
 style: light
 url: "https://gregnicol.xyz"
+theme: jekyll-theme-hacker
 
 plugins:
   - jekyll-octicons

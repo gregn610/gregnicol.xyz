@@ -8,20 +8,22 @@ published: true
 
 ## Meta SQL Intro
 I’m a big fan of meta SQL, what I call it when you use SQL to write SQL. Something like:
-{% raw %}
+
 ~~~ plpgsql
-    SELECT
-        'INSERT INTO zzzdba.rowcount_census SELECT now(), ' ||
-        table_name || ', count(*) AS kount FROM '||
-        table_schema ||'.' || table_name || ';' AS metasql
-    FROM
-        information_schema.tables
-    WHERE
-        table_schema = 'accounts'
-    AND table_name ~ 'current_account_\d\d\d\d'
-    ;
+
+SELECT
+    'INSERT INTO zzzdba.rowcount_census SELECT now(), ' ||
+    table_name || ', count(*) AS kount FROM '||
+    table_schema ||'.' || table_name || ';' AS metasql
+FROM
+    information_schema.tables
+WHERE
+    table_schema = 'accounts'
+AND table_name ~ 'current_account_\d\d\d\d'
+;
+    
 ~~~
-{% endraw %}
+
 returning:
 {% raw %}
 ~~~ txt
@@ -117,7 +119,7 @@ print(ddl)
 CREATE OR REPLACE VIEW app.{{ dbd[0].table_schema }}_{{ dbd[0].table_name }}_v AS
 SELECT
 {%- for col in dbd %}
-	{{ col.table_name }}.{{col.column_name}}{% if not loop.last %},{% endif %}
+    {{ col.table_name }}.{{col.column_name}}{% if not loop.last %},{% endif %}
 {%- endfor %}
 FROM {{ dbd[0].table_schema }}.{{ dbd[0].table_name }}
 WHERE fn_access_control(‘{{ dbd[0].table_schema }}.{{ dbd[0].table_name }}’) = CURRENT_USER
@@ -130,10 +132,10 @@ WHERE fn_access_control(‘{{ dbd[0].table_schema }}.{{ dbd[0].table_name }}’)
 ~~~ plpgsql
 CREATE OR REPLACE VIEW app.accounts_current_account_2018_v AS
 SELECT
-	current_account_2018.id,
-	current_account_2018.account_number,
-	current_account_2018.account_type_id,
-	current_account_2018.balance
+    current_account_2018.id,
+    current_account_2018.account_number,
+    current_account_2018.account_type_id,
+    current_account_2018.balance
 FROM accounts.current_account_2018
 WHERE fn_access_control(‘accounts.current_account_2018’) = CURRENT_USER
 ;
@@ -175,7 +177,7 @@ print(ddl)
 CREATE OR REPLACE VIEW app.{{ tbl.fullname | replace('.','_') }}_v AS
 SELECT
 {%- for col in tbl.columns %}
-	{{ tbl.fullname}}.{{ col.name }}{% if not loop.last %},{% endif %}
+    {{ tbl.fullname}}.{{ col.name }}{% if not loop.last %},{% endif %}
 {%- endfor %}
 FROM {{ tbl.fullname | replace('.','_') }}
 INNER JOIN accounts.account_type USING (account_type_id)
@@ -188,10 +190,10 @@ WHERE fn_access_control(‘{{ tbl.fullname }}’) = CURRENT_USER
 ~~~ plpgsql
 CREATE OR REPLACE VIEW app.accounts_current_account_2018_v AS
 SELECT
-	accounts.current_account_2018.id,
-	accounts.current_account_2018.account_number,
-	accounts.current_account_2018.account_type_id,
-	accounts.current_account_2018.balance
+    accounts.current_account_2018.id,
+    accounts.current_account_2018.account_number,
+    accounts.current_account_2018.account_type_id,
+    accounts.current_account_2018.balance
 FROM accounts_current_account_2018
 INNER JOIN accounts.account_type USING (account_type_id)
 WHERE fn_access_control(‘accounts.current_account_2018’) = CURRENT_USER
