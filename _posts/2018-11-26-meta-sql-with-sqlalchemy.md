@@ -3,7 +3,7 @@ title: "Meta SQL with Python &amp; SQLAlchemy"
 published: true
 ---
 
-\* Sorry about the mangled codeblocks. In the meantime, this post is still available on [over here](https://github.com/gregn610/plpgsql/wiki/meta-sql-with-python-&-sqlalchemy)
+\* Sorry about the mangled codeblocks. In the meantime, this post is still available [over here](https://github.com/gregn610/plpgsql/wiki/meta-sql-with-python-&-sqlalchemy)
 
 
 ## Meta SQL Intro
